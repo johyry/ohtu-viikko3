@@ -8,7 +8,7 @@ import java.util.List;
 public class Submission {
     private int week;
     private int hours;
-    private JsonArray excercises;
+    private ArrayList<Integer> exercises;
     private String course;
     
    
@@ -20,13 +20,19 @@ public class Submission {
     public void setHours(int hours) {
         this.hours = hours;
     }
+    
+    public int getNumberOfExercises() {
+        return exercises.size();
+    }
+    
+    
 
-    public JsonArray getExcercises() {
-        return excercises;
+    public ArrayList<Integer> getExercises() {
+        return exercises;
     }
 
-    public void setExcercises(JsonArray excercises) {
-        this.excercises = excercises;
+    public void setExercises(ArrayList<Integer> exercises) {
+        this.exercises = exercises;
     }
 
     public String getCourse() {
@@ -47,8 +53,14 @@ public class Submission {
 
     @Override
     public String toString() {
+        String tehtavat = "";
+        
+        for (int i = 0; i < exercises.size(); i++) {
+            tehtavat = tehtavat + exercises.get(i) + ", ";
+        }
+        
         return course + ", " + week + " tehtyjä tehtäviä yhteensä: "
-                + " aikaa kului: " + hours + " tehdyt tehtävät: " + excercises;
+                + " aikaa kului: " + hours + " tehdyt tehtävät: " + tehtavat;
     }
     
 }
